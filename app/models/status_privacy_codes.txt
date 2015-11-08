@@ -1,0 +1,12 @@
+Status Code
+0:	Strangers
+1:	Friends
+2:	User 1 requested User 2
+3:	User 2 requested User 1
+4:	User 1 blocked User 2
+5:	User 2 blocked User 1
+6:	Both blocked
+
+Privacy Code
+0:	Limited access
+1:	Full access

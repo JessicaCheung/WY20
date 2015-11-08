@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+	<title>App</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+	<div class="container" ng-controller="AppCtrl">
+		<h1>Users</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>User name</th>
+					<th>Name</th>
+					<th>Password</th>
+					<th>Email</th>
+					<th>Number</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="user.username"></input></td>
+					<td><input class="form-control" ng-model="user.name"></input></td>
+					<td><input class="form-control" ng-model="user.password"></input></td>
+					<td><input class="form-control" ng-model="user.email"></input></td>
+					<td><input class="form-control" ng-model="user.mobilenumber"></input></td>
+					<td><button class="btn btn-primary" ng-click="addUser()">Add user</button></td>
+					<td><button class="btn btn-info" ng-click="updateUser(user._id)">Update</button></td>
+					<td><button class="btn btn-info" ng-click="clearForm()">Clear</button></td>
+				</tr>
+				<tr ng-repeat="user in userlist">
+					<td>{{user.username}}</td>
+					<td>{{user.name}}</td>
+					<td>{{user.password}}</td>
+					<td>{{user.email}}</td>
+					<td>{{user.mobilenumber}}</td>
+					<td><button class="btn btn-warning" ng-click="getUser(user._id)">Edit</button></td>
+					<td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+	
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="controller.js"></script>
+	
+</body>
+</html>
