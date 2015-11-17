@@ -5,6 +5,6 @@
 	"dependencies": {
 		"express": "4.13.x",
 		"body-parser": "1.14.x",
-		"mongoose": "4.2.x"
+		"pg": "4.4.x"
 	}
 }
