@@ -20,18 +20,39 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 		});
 	};
 		
-	$scope.fun = function() {
-		console.log($scope.testForm);
-		console.log($scope.testForm.boo.$valid);
-	};
-	
 	$scope.deleteUser = function(id) {
 		console.log("Deleting: " + id);
 		$http.delete('/user/' + id).success(function(response) {
 			refresh();
 		});
 	};
-		
+	
+	$scope.getUser = function(id) {
+		console.log(id);
+		$http.get('/user/' + id).success(function(response) {
+			$scope.user = response._result.rows[0];
+		});
+	};
+	
+	$scope.updateUser = function() {
+		console.log("Updating: " + $scope.user.username);
+		$http.put('/user/' + $scope.user.id, $scope.user).success(function(response) {
+			refresh();
+		});
+	};
+	
+	$scope.clearForm = function() {
+		console.log('Clearing form');
+		$scope.user = '';
+		refresh();
+	};
+	
+	$scope.parsePhoneNumber = function(number) {
+		var res = number.toString().replace(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})/,"($1)-$2-$3");
+		console.log(res);
+		return res;
+	};
+	
 }]);
 
 myApp.directive('phoneNumber', function() {
@@ -54,7 +75,8 @@ myApp.directive('phoneNumber', function() {
 				//set the input to formatted value
 				el.val(viewValue);
 				
-				return viewValue;
+				//return viewValue;
+				return parseInt(numbers);
 			});
 		}
 	}

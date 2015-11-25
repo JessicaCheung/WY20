@@ -9,13 +9,13 @@
 	<div class="container" ng-controller="AppCtrl">
 		<h1>Users</h1>
 		<form name="userForm" novalidate>
-			Username<input class="form-control" name="username" ng-model="user.username" required></input>
-			Name<input class="form-control" name="name" ng-model="user.name" required></input>
-			Password<input class="form-control" name="password" ng-model="user.password" required></input>
-			Email<input type="email" class="form-control" name="email" ng-model="user.email" required></input>
-			Number<input phone-number class="form-control" name="mobileNumber" ng-model="user.mobileNumber" required></input>
+			Username<input class="form-control" ng-model="user.username" required></input>
+			Name<input class="form-control" ng-model="user.name" required></input>
+			Password<input class="form-control" ng-model="user.password" required></input>
+			Email<input type="email" class="form-control" ng-model="user.email" required></input>
+			Number<input phone-number class="form-control" ng-model="user.mobilenumber" required></input>
 			<button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="addUser()">Add user</button>
-			<button class="btn btn-info" ng-click="updateUser(user.id)">Update</button>
+			<button class="btn btn-info" ng-click="updateUser()">Update</button>
 			<button class="btn btn-info" ng-click="clearForm()">Clear</button>
 		</form>
 		<table class="table">
@@ -49,7 +49,7 @@
 					<td>{{user.name}}</td>
 					<td>{{user.password}}</td>
 					<td>{{user.email}}</td>
-					<td>{{user.mobilenumber}}</td>
+					<td>{{parsePhoneNumber(user.mobilenumber)}}</td>
 					<td><button class="btn btn-warning" ng-click="getUser(user.id)">Edit</button></td>
 					<td><button class="btn btn-danger" ng-click="deleteUser(user.id)">Delete</button></td>
 				</tr>

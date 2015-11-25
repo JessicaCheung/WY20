@@ -18,6 +18,7 @@ client.connect(function(err) {
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 require('./app/api/user_api')(app, client);
+require('./app/api/friends_api')(app, client);
 
 app.listen(8080);
 console.log("Server running on port 8080");
